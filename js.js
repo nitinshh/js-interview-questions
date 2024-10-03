@@ -360,6 +360,79 @@ output: [
 ]
 */
 
+// -----------------------------------------------------------------------------
+
+// add numbers present in a string containing random letters and numbers in JavaScript
+
+function sumNumbersInString(str) {
+    let sum = 0;
+    let temp = '';
+
+    for (let char of str) {
+        if (!isNaN(char) && char !== ' ') {
+            temp += char;
+        } else {
+            if (temp !== '') {
+                sum += parseInt(temp);
+                temp = '';
+            }
+        }
+    }
+
+    if (temp !== '') {
+        sum += parseInt(temp);
+    }
+
+    return sum;
+}
+
+// Example usage:
+let randomString = "abc123xyz45def6";
+console.log(sumNumbersInString(randomString)); // Output: 174
+
+
+/*
+
+or
+
+function sumNumbersInString(str) {
+    // Use a regular expression to find all sequences of digits in the string
+    const numbers = str.match(/\d+/g);
+    
+    // If numbers are found, reduce them by summing their numeric values
+    // If no numbers are found, return 0
+    return numbers ? numbers.reduce((sum, num) => sum + Number(num), 0) : 0;
+}
+
+// Example usage:
+let randomString = "abc123xyz45def6";
+console.log(sumNumbersInString(randomString)); // Output: 174
+
+*/
+
+
+// -----------------------------------------------------------------------------
+
+// add each number separately present in a string containing random letters and numbers in JavaScript
+
+function sumDigitsInString(str) {
+    let sum = 0;
+
+    for (let char of str) {
+        if (!isNaN(char) && char !== ' ') {
+            sum += parseInt(char); // Add each digit separately
+        }
+    }
+
+    return sum;
+}
+
+// Example usage:
+let randomString2 = "abc123xyz45def6";
+console.log(sumDigitsInString(randomString2)); // Output: 21
+
+
+// -----------------------------------------------------------------------------
 
 
 
